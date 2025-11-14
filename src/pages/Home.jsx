@@ -6,6 +6,8 @@ export default function Home() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [error, setError] = useState("");
+
   const [page, setPage] = useState(1);
   const pageSize = 10;
 
@@ -21,6 +23,8 @@ export default function Home() {
       setIsLoading(false);
     } catch (err) {
       console.log("Getda Xatolik", err);
+      setError(err.message || "Ma'lumot olishda xatolik yuz berdi");
+    } finally {
       setIsLoading(false);
     }
   }
@@ -35,36 +39,40 @@ export default function Home() {
         <div className="home__inner">
           <h2 className="home__title">So`ngi yangiliklar</h2>
           <div className="home__content">
-            <div className="home__right">
-              <ul className="home__list">
-                {isLoading && comments.length === 0
-                  ? Array.from({ length: 10 }).map((_, index) => (
-                      <li key={index} className="home__item skeleton-item">
-                        <div className="item__img-div">
-                          <div className="skeleton skeleton-img"></div>
-                        </div>
-                        <div>
-                          <h2 className="skeleton skeleton-title"></h2>
-                          <div className="item__bottom">
-                            <span className="skeleton skeleton-source"></span>
-                            <span className="skeleton skeleton-date"></span>
+            {error ? (
+              <p className="home__error">{error}</p>
+            ) : (
+              <div className="home__right">
+                <ul className="home__list">
+                  {isLoading && comments.length === 0
+                    ? Array.from({ length: 10 }).map((_, index) => (
+                        <li key={index} className="home__item skeleton-item">
+                          <div className="item__img-div">
+                            <div className="skeleton skeleton-img"></div>
                           </div>
-                        </div>
-                      </li>
-                    ))
-                  : comments.map((el, index) => (
-                      <CommentItem key={index} {...el} />
-                    ))}
-              </ul>
+                          <div>
+                            <h2 className="skeleton skeleton-title"></h2>
+                            <div className="item__bottom">
+                              <span className="skeleton skeleton-source"></span>
+                              <span className="skeleton skeleton-date"></span>
+                            </div>
+                          </div>
+                        </li>
+                      ))
+                    : comments.map((el, index) => (
+                        <CommentItem key={index} {...el} />
+                      ))}
+                </ul>
 
-              <button
-                onClick={() => setPage(page + 1)}
-                className="home__add"
-                disabled={isLoading}
-              >
-                {isLoading ? "Yuklanmoqda..." : "Yana 10 ma'lumot"}
-              </button>
-            </div>
+                <button
+                  onClick={() => setPage(page + 1)}
+                  className="home__add"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Yuklanmoqda..." : "Yana 10 ma'lumot"}
+                </button>
+              </div>
+            )}
             <div className="home__left"></div>
           </div>
         </div>

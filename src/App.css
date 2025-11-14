@@ -608,3 +608,26 @@ body {
 .hero__img-skeleton {
     height: 100%;
 }
+
+.home__error {
+    background-color: #fee2e2;
+    /* och qizil fon */
+    color: #b91c1c;
+    /* to‘q qizil matn */
+    border: 1px solid #fca5a5;
+    /* qizil ramka */
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Icon uchun */
+.home__error::before {
+    content: "⚠️";
+    font-size: 16px;
+}
