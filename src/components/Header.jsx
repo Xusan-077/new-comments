@@ -2,8 +2,11 @@ import { useState } from "react";
 import Logo from "../assets/images/Logo.svg";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
+
   const [isSearch, setIsSearch] = useState(false);
 
   return (
@@ -34,7 +37,7 @@ export default function Header() {
                   <input
                     className="header__search"
                     type="text"
-                    placeholder="qidirish"
+                    placeholder={t("header.search")}
                   />
                   <button
                     className="header__search-cancle"
@@ -45,7 +48,24 @@ export default function Header() {
                 </div>
               )}
             </div>
-            <select className="header__language-select">
+            <div className="header__saralanganlar">
+              <ul className="header__list">
+                <li className="header__item">
+                  <Link className="header__link" to="/">
+                    {t("header.home")}
+                  </Link>
+                </li>
+                <li className="header__item">
+                  <Link className="header__link" to="/saralanganlar">
+                    {t("header.sorted")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <select
+              onChange={(evt) => i18n.changeLanguage(evt.target.value)}
+              className="header__language-select"
+            >
               <option value="uz">uz</option>
               <option value="en">en</option>
               <option value="ru">ru</option>

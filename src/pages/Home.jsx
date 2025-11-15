@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CommentItem from "../components/CommentItem";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
+
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,9 +24,11 @@ export default function Home() {
       setComments([...comments, ...res.data.articles]);
 
       setIsLoading(false);
+
+      console.log(res.data.article);
     } catch (err) {
       console.log("Getda Xatolik", err);
-      setError(err.message || "Ma'lumot olishda xatolik yuz berdi");
+      setError(`${err.message}` || "Ma'lumot olishda xatolik yuz berdi");
     } finally {
       setIsLoading(false);
     }
@@ -37,7 +42,7 @@ export default function Home() {
     <section className="home">
       <div className="container">
         <div className="home__inner">
-          <h2 className="home__title">So`ngi yangiliklar</h2>
+          <h2 className="home__title">{t("main.titel")}</h2>
           <div className="home__content">
             {error ? (
               <p className="home__error">{error}</p>

@@ -1,1 +1,41 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+.notFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.notFound__img {
+    width: 446px;
+    margin-bottom: 32px;
+}
+
+.notFound__titel {
+    font-size: 36px;
+    margin-bottom: 32px;
+}
+
+.notFound__back {
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 13px 10px;
+    background-color: #E31E24FF;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notFound__text {
+    margin-bottom: 32px;
+    font-size: 16px;
+}
+
+.notFound-titel {
+    font-size: 150px;
+    font-weight: 900;
+    color: #E31E24FF;
+}

@@ -3,28 +3,28 @@ import CommentItem from "../components/CommentItem";
 import { Articles } from "../constants";
 import { useAppContext } from "../hooks/useAppContext";
 
-export default function Saralangan() {
-  const { like } = useAppContext();
-
+export default function HomeOrg() {
   const { t } = useTranslation();
 
-  return (
-    <section className="saralangan">
-      <div className="container">
-        <div className="saralangan__inner">
-          {like.length ? (
-            <>
-              <h2 className="saralangan__title">{t("header.sorted")}</h2>
+  const { like } = useAppContext();
 
+  console.log(like);
+
+  return (
+    <section className="home">
+      <div className="container">
+        <div className="home__inner">
+          <h2 className="home__title">{t("main.titel")}</h2>
+
+          <div className="home__content">
+            <div className="home__right">
               <ul className="home__list">
-                {like.map((el, index) => (
+                {Articles.map((el, index) => (
                   <CommentItem item={el} key={index} {...el} />
                 ))}
               </ul>
-            </>
-          ) : (
-            <p className="saralangan__bosh">{t("header.sorted")} yo`q</p>
-          )}
+            </div>
+          </div>
         </div>
       </div>
     </section>

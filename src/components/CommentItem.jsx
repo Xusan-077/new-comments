@@ -1,38 +1,52 @@
-export default function CommentItem({
-  title,
-  publishedAt,
-  description,
-  source,
-  urlToImage,
-}) {
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../hooks/useAppContext";
+
+export default function CommentItem({ item, title, source, urlToImage }) {
+  const { like, setLike } = useAppContext();
+  const navigate = useNavigate();
+
+  function handleAddtoLike() {
+    const isLiked = like.some((el) => el.id === item.id);
+    if (isLiked) {
+      setLike(like.filter((el) => el.id !== item.id));
+    } else {
+      setLike([...like, item]);
+    }
+  }
+
   return (
     <li className="home__item">
-      <div className="item__img-div">
-        {urlToImage && <img src={urlToImage} className="item__img" alt="" />}
+      <div
+        className="item__img-div"
+        onClick={() => navigate(`/news/${item.id}`)}
+      >
+        {/* {urlToImage && (
+          <img
+            src={urlToImage}
+            className="item__img"
+            alt={title || "news image"}
+          />
+        )} */}
       </div>
-      <div className="">
-        <h2 className="item__title">{title}</h2>
+      <div className="item__content">
         <div className="item__bottom">
-          <span className="item__source-name">{source.name}</span>
-          <span className="item__date">
-            {new Date(publishedAt).toISOString().substr(11, 5)}
-          </span>
+          <span className="item__source-name">{source?.name}</span>
+          <div className="item__like" onClick={handleAddtoLike}>
+            <i
+              className={`bi ${
+                like.find((el) => el.id === item.id)
+                  ? "bi-heart-fill active"
+                  : "bi-heart"
+              } text-[18px]`}
+            ></i>
+          </div>
         </div>
+        <h2 className="item__title">
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
+            {title}
+          </a>
+        </h2>
       </div>
     </li>
   );
 }
-
-// <li className="home__item">
-//   <div className="home__item-top">
-//     <span className="home__item-fullname">{user.fullName}</span>
-//     <span className="home__item-username">{user.username}</span>
-//   </div>
-//   <div className="home__item-bottom">
-//     <h1 className="home__item-title">{body}</h1>
-//     <span className="home__item-likes">
-//       <i className="home__item-like-icon bi bi-heart-fill"></i>
-//       {likes}
-//     </span>
-//   </div>
-// </li>

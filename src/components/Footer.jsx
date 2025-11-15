@@ -9,8 +9,11 @@ import youtube from "../assets/icons/youtube.svg";
 import appstore from "../assets/icons/appstore.svg";
 import googleplay from "../assets/icons/googleplay.svg";
 import appgallary from "../assets/icons/appgallary.svg";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -30,22 +33,22 @@ export default function Footer() {
                 <ul className="footer__list">
                   <li className="footer__item">
                     <Link className="footer__link" to="/sayt-haqida">
-                      Sayt haqida
+                      {t("footer.list.item1")}
                     </Link>
                   </li>
                   <li className="footer__item">
                     <Link className="footer__link" to="/bizdes">
-                      Bizdes
+                      {t("footer.list.item2")}
                     </Link>
                   </li>
                   <li className="footer__item">
                     <Link className="footer__link" to="/aloqa">
-                      Aloqa
+                      {t("footer.list.item3")}
                     </Link>
                   </li>
                   <li className="footer__item">
                     <Link className="footer__link" to="/arxiv">
-                      Arxiv
+                      {t("footer.list.item4")}
                     </Link>
                   </li>
                 </ul>
@@ -61,20 +64,17 @@ export default function Footer() {
             </div>
             <div className="footer__middle">
               <p className="footer__text">
-                QALAMPIR.UZ.
+                {t("footer.company")}
                 <br />
-                Веб-сайт ОАВ сифатида 2018 йил 26 октябрь куни Ўзбекистон
-                Республикаси Президенти Администрацияси ҳузуридаги Ахборот ва
-                оммавий коммуникациялар агентлигидан 1089 рақам билан рўйхатга
-                олинган.
+                {t("footer.firstText")}
                 <br />
                 <br />
-                Муассис: “QALAMPIR” МЧЖ.
+                {t("footer.secontTitle")}
                 <br />
                 <br />
-                Таҳририят манзили: Тошкент шаҳри, Беруний кўчаси, 88-уй.
+                {t("footer.secondText")}
                 <br />
-                Электрон манзил: info@qalampir.uz
+                {t("footer.thiredText")}
               </p>
               <div className="footer__action-icons">
                 <img src={appstore} alt="" className="footer__action-icon" />
@@ -87,7 +87,7 @@ export default function Footer() {
                 <span className="footer__span">16+</span>
               </div>
               <span className="footer__bottom-span">
-                © Copyright 2025 Qalampir - Ҳақиқат аччиқ бўлади.
+                {t("footer.bottomTitle")}
               </span>
             </div>
           </div>
