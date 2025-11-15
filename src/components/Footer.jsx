@@ -89,6 +89,13 @@ export default function Footer() {
               <span className="footer__bottom-span">
                 {t("footer.bottomTitle")}
               </span>
+              <Link to="/" className="footer__logo-link">
+                <img
+                  src="https://qalampir.uz/assets/brand/Symbol.svg"
+                  alt=""
+                  className="footer__logo--active"
+                />
+              </Link>
             </div>
           </div>
         </div>

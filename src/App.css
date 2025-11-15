@@ -296,7 +296,6 @@ body {
     font-size: 13px;
     line-height: 20px;
     color: rgba(150, 150, 150, 1);
-    max-width: 53%;
 }
 
 
@@ -729,3 +728,154 @@ body {
 }
 
 .detail__author {}
+
+.footer__logo--active {
+    display: none;
+}
+
+@media (max-width: 868px) {
+    .home__list {
+        grid-template-columns: 1fr;
+    }
+
+    .home__item {
+        width: 100%;
+    }
+
+    .footer__top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .footer__middle {
+        flex-direction: column;
+    }
+
+    .footer__logo {
+        display: none;
+    }
+
+    .footer {
+        padding: 20px 0;
+    }
+
+
+    .footer__logo-link {
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer__logo--active {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .footer__inner {
+        display: block;
+    }
+
+    .footer__middle {
+        display: block;
+    }
+
+    .footer__action-icon {
+        width: 150px;
+    }
+}
+
+@media (max-width: 520px) {
+    .header__logo {
+        width: 200px;
+    }
+
+    .header__logo-link {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .header__left {
+        justify-content: space-between;
+    }
+
+    .header__inner {
+        display: block;
+    }
+
+    .footer__action-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+
+    .footer__action-icons img {
+        width: 110px;
+    }
+
+
+    .footer__text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer__middle {
+        width: 100%;
+    }
+
+    .footer__bottom-span {
+        font-size: 11px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer__span-div {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width : 900px) {
+    .detail__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .detail__list {
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+    }
+
+    .home__item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .detail__title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:425px) {
+    .item__text {
+        font-size: 12px;
+    }
+
+    .home__item {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    .item__img-div {
+        width: 100px;
+    }
+
+    .detail__img {
+        height: 200px;
+    }
+}

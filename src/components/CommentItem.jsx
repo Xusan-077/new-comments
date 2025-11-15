@@ -42,7 +42,7 @@ export default function CommentItem({ item, title, source, urlToImage }) {
           </div>
         </div>
         <h2 className="item__title">
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
+          <a className="item__text" href={item.url}>
             {title}
           </a>
         </h2>
